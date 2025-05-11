@@ -3,12 +3,8 @@
 namespace xxxxxxxx
 {
 
-SampleLib::SampleLib()
-{
-}
+SampleLib::SampleLib() {}
 
-SampleLib::~SampleLib()
-{
-}
+SampleLib::~SampleLib() {}
 
 }  // namespace xxxxxxxx
