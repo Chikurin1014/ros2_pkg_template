@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build_and_test_ros2:
+  build_and_test:
     runs_on: ubuntu-latest
     container:
       image: rostooling/setup-ros-docker:ubuntu-noble-latest
