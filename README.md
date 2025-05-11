@@ -34,6 +34,42 @@ ros2 pkg create xxxxxxxx \
     --library-name sample_lib
 ```
 
+then, replace some cmake scripts with `ament_cmake_auto` tools:
+
+```diff
+- find_package(ament_cmake REQUIRED)
+- find_package(ament_cmake_ros REQUIRED)
+- find_package(rclcpp REQUIRED)
+- add_library(sample_lib src/sample_lib.cpp)
+- add_library(xxxxxxxx::sample_lib ALIAS sample_lib)
+- target_compile_features(sample_lib PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+- target_include_directories(..)
+- ament_target_dependencies(..)
+- target_compile_definitions(..)
+- install(..)
+- install(..)
+- add_executable(sample_node src/sample_node.cpp)
+- target_include_directories(..)
+- target_link_libraries(sample_node sample_lib)
+- install(..)
++ find_package(ament_cmake_auto REQUIRED)
++ ament_auto_find_build_dependencies()
++
++ ament_auto_add_library(sample_lib
++     src/sample_lib.cpp
++     include/xxxxxxxx/sample_lib.hpp
++     include/xxxxxxxx/visibility_control.h
++ )
+```
+
+```diff
+- ament_export_include_directories(..)
+- ament_export_libraries(..)
+- ament_export_targets(..)
+- ament_package()
++ ament_auto_package()
+```
+
 and add `ament_cmake_clang_format` to test dependencies.
 
 ```diff
