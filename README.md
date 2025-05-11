@@ -34,13 +34,13 @@ ros2 pkg create xxxxxxxx \
     --library-name sample_lib
 ```
 
-and replaced `ament_lint_auto` with `ament_cmake_clang_format`
+and add `ament_cmake_clang_format` to test dependencies.
 
 ```diff
 # package.xml
 
-- <test_depend>ament_lint_auto</test_depend>
-- <test_depend>ament_lint_common</test_depend>
+<test_depend>ament_lint_auto</test_depend>
+<test_depend>ament_lint_common</test_depend>
 + <test_depend>ament_cmake_clang_format</test_depend>
 ```
 
@@ -48,12 +48,11 @@ and replaced `ament_lint_auto` with `ament_cmake_clang_format`
 # CMakeLists.txt
 
 if(BUILD_TESTING)
--   find_package(ament_lint_auto REQUIRED)
-+   find_package(ament_cmake_clang_format REQUIRED)
-
--   set(ament_cmake_copyright_FOUND TRUE)
--   set(ament_cmake_cpplint_FOUND TRUE)
--   ament_lint_auto_find_test_dependencies()
-+   ament_clang_format()
+    find_package(ament_lint_auto REQUIRED)
+    ..
+    set(ament_cmake_copyright_FOUND TRUE)
+    set(ament_cmake_cpplint_FOUND TRUE)
++     set(ament_cmake_lint_cmake_FOUND TRUE)
+    ament_lint_auto_find_test_dependencies()
 endif()
 ```
