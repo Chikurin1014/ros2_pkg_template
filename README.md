@@ -27,7 +27,11 @@ sudo apt update && sudo apt install -y \
 This package was created using the following command:
 
 ```shell
-ros2 pkg create xxxxxxxx --build-type ament_cmake --dependencies rclcpp --node-name sample_node --library-name sample_lib
+ros2 pkg create xxxxxxxx \
+    --build-type ament_cmake \
+    --dependencies rclcpp \
+    --node-name sample_node \
+    --library-name sample_lib
 ```
 
 and replaced `ament_lint_auto` with `ament_cmake_clang_format`
