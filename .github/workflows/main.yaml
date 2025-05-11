@@ -7,8 +7,8 @@ on:
       - main
 
 jobs:
-  build_and_test:
-    runs_on: ubuntu-latest
+  build-and-test:
+    runs-on: ubuntu-latest
     container:
       image: rostooling/setup-ros-docker:ubuntu-noble-latest
     steps:
