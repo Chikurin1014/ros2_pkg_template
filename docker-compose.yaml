@@ -3,7 +3,6 @@ name: ${PACKAGE_NAME}
 services:
   ssh:
     image: kroniak/ssh-client
-    container_name: ssh
     volumes:
       - ${HOME}/.ssh:/root/.ssh:ro
       - ${SSH_AUTH_SOCK}:/tmp/ssh-agent.sock
@@ -14,7 +13,6 @@ services:
     tty: true
 
   work:
-    container_name: work
     build:
       context: ./.docker/work
       args:
