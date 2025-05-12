@@ -17,7 +17,7 @@ jobs:
       - name: Build and Run tests
         uses: ros-tooling/action-ros-ci@v0.4
         with:
-          package-name: xxxxxxxx
+          package-name: sample_package
           target-ros2-distro: jazzy
           colcon-defaults: |
             {

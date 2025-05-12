@@ -22,12 +22,12 @@ sudo apt update && sudo apt install -y \
     ros-${ROS_DISTRO}-ament-cmake-clang-format
 ```
 
-## Package creation command
+## Package creation
 
 This package was created using the following command:
 
 ```shell
-ros2 pkg create xxxxxxxx \
+ros2 pkg create sample_package \
     --build-type ament_cmake \
     --dependencies rclcpp \
     --node-name sample_node \
@@ -37,11 +37,19 @@ ros2 pkg create xxxxxxxx \
 then, replace some cmake scripts with `ament_cmake_auto` tools:
 
 ```diff
+# package.xml
+
++ <build_depend>ament_cmake_auto</build_depend>
+```
+
+```diff
+# CMakeLists.txt
+
 - find_package(ament_cmake REQUIRED)
 - find_package(ament_cmake_ros REQUIRED)
 - find_package(rclcpp REQUIRED)
 - add_library(sample_lib src/sample_lib.cpp)
-- add_library(xxxxxxxx::sample_lib ALIAS sample_lib)
+- add_library(sample_package::sample_lib ALIAS sample_lib)
 - target_compile_features(sample_lib PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 - target_include_directories(..)
 - ament_target_dependencies(..)
@@ -57,12 +65,14 @@ then, replace some cmake scripts with `ament_cmake_auto` tools:
 +
 + ament_auto_add_library(sample_lib
 +     src/sample_lib.cpp
-+     include/xxxxxxxx/sample_lib.hpp
-+     include/xxxxxxxx/visibility_control.h
++     include/sample_package/sample_lib.hpp
++     include/sample_package/visibility_control.h
 + )
 ```
 
 ```diff
+# CMakeLists.txt
+
 - ament_export_include_directories(..)
 - ament_export_libraries(..)
 - ament_export_targets(..)

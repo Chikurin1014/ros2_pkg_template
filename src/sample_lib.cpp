@@ -1,10 +1,10 @@
-#include "xxxxxxxx/sample_lib.hpp"
+#include "sample_package/sample_lib.hpp"
 
-namespace xxxxxxxx
+namespace sample_package
 {
 
 SampleLib::SampleLib() {}
 
 SampleLib::~SampleLib() {}
 
-}  // namespace xxxxxxxx
+}  // namespace sample_package

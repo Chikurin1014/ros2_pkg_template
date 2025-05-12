@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(xxxxxxxx)
+project(sample_package)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options(-Wall -Wextra -Wpedantic)
@@ -11,8 +11,8 @@ ament_auto_find_build_dependencies()
 
 ament_auto_add_library(sample_lib
     src/sample_lib.cpp
-    include/xxxxxxxx/sample_lib.hpp
-    include/xxxxxxxx/visibility_control.h
+    include/sample_package/sample_lib.hpp
+    include/sample_package/visibility_control.h
 )
 
 ament_auto_add_executable(sample_node
