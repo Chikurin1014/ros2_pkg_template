@@ -22,4 +22,3 @@ jobs:
           package-name: sample_package
           target-ros2-distro: jazzy
           rosdep-check: true
-          colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/b8436aa16c0bdbc01081b12caa253cbf16e0fb82/index.yaml
