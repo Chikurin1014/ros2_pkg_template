@@ -16,10 +16,10 @@
             "settings": {
                 "editor.formatOnSave": true,
                 "[xml]": {
-                    "editor.defaultFormatter": "redhat.vscode-xml"
+                    "editor.defaultFormatter": "ms-iot.vscode-ros"
                 },
                 "[yaml]": {
-                    "editor.defaultFormatter": "redhat.vscode-yaml"
+                    "editor.defaultFormatter": "ms-iot.vscode-ros"
                 },
                 "[python]": {
                     "editor.defaultFormatter": "ms-python.autopep8"
