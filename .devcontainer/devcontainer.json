@@ -31,6 +31,7 @@
                 "[cpp]": {
                     "editor.defaultFormatter": "ms-vscode.cpptools"
                 },
+                "C_Cpp.clang_format_style": "file",
                 "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
                 "C_Cpp.inlayHints.autoFunctionReturnTypes.enabled": true,
                 "C_Cpp.inlayHints.variableTypes.enabled": true,
