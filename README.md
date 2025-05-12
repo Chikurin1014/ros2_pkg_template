@@ -34,7 +34,7 @@ ros2 pkg create sample_package \
     --library-name sample_lib
 ```
 
-then, replace some cmake scripts with `ament_cmake_auto` tools:
+then, replace some cmake scripts with `ament_cmake_auto`:
 
 ```diff
 # package.xml
@@ -80,7 +80,11 @@ then, replace some cmake scripts with `ament_cmake_auto` tools:
 + ament_auto_package()
 ```
 
-and add `ament_cmake_clang_format` to test dependencies.
+and configure test flows:
+
+- add `ament_clang_format`
+- skip `ament_lint_cmake`
+- skip `ament_uncrustify`
 
 ```diff
 # package.xml
@@ -99,6 +103,7 @@ if(BUILD_TESTING)
     set(ament_cmake_copyright_FOUND TRUE)
     set(ament_cmake_cpplint_FOUND TRUE)
 +     set(ament_cmake_lint_cmake_FOUND TRUE)
++     set(ament_cmake_uncrustify_FOUND TRUE)
     ament_lint_auto_find_test_dependencies()
 endif()
 ```
