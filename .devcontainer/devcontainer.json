@@ -1,9 +1,6 @@
 {
     "dockerComposeFile": "../docker-compose.yaml",
     "service": "work",
-    "runServices": [
-        "work"
-    ],
     "workspaceFolder": "/home/ubuntu/ros_ws/src/pkg",
     "customizations": {
         "vscode": {
