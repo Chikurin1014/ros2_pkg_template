@@ -1,0 +1,25 @@
+---
+Checks: "
+    -*,
+    bugprone-*,
+    clang-analyzer-*,
+    clang-diagnostic-*,
+    cppcore-guidelines-*,
+    readability-*,
+    modernize-*,
+    "
+
+HeaderFileExtensions:
+    - ""
+    - h
+    - hh
+    - hpp
+    - hxx
+ImplementationFileExtensions:
+    - c
+    - cc
+    - cpp
+    - cxx
+HeaderFilterRegex: "(src|include)/.*"
+
+SystemHeaders: false
