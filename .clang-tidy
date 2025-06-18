@@ -1,12 +1,10 @@
 ---
 Checks: "
     -*,
-    bugprone-*,
     clang-analyzer-*,
     clang-diagnostic-*,
     cppcore-guidelines-*,
     readability-*,
-    modernize-*,
     "
 
 HeaderFileExtensions:
