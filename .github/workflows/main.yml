@@ -9,6 +9,7 @@ on:
       - main
 
 env:
+  PACKAGE_NAME: "hello world!"
   ROS_DISTRO: jazzy
 
 jobs:
@@ -23,6 +24,9 @@ jobs:
         id: parse-env-file
         shell: bash
         run: source .github/workflows/scripts/parse-env.sh $GITHUB_ENV || exit 0
+
+      - run: | # debug
+          echo "PACKAGE_NAME = ${{ env.PACKAGE_NAME }}"
 
   python-lint:
     name: Python Lint
