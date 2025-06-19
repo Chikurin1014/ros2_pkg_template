@@ -9,10 +9,21 @@ on:
       - main
 
 env:
-  ROS2_PKG_NAME: sample_package
-  ROS2_CPP_LIBPATH: /opt/ros/jazzy/include
+  ROS_DISTRO: jazzy
 
 jobs:
+  parse-env-file:
+    name: Parse Environment File
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Parse environment file
+        id: parse-env-file
+        shell: bash
+        run: source .github/workflows/scripts/parse-env.sh $GITHUB_ENV || exit 0
+
   python-lint:
     name: Python Lint
     runs-on: ubuntu-latest
@@ -33,18 +44,17 @@ jobs:
       image: rostooling/setup-ros-docker:ubuntu-noble-ros-jazzy-desktop-latest
 
     steps:
+      - name: Colcon Build
+        uses: ros-tooling/action-ros-ci@v0.4
+        with:
+          target-ros2-distro: ${{ env.ROS_DISTRO }}
+          skip-tests: true
+
       - name: Upload ROS C++ libraries
         uses: actions/upload-artifact@v4
         with:
           name: ros-cpp-libraries
-          path: ${{ env.ROS2_CPP_LIBPATH }}
-
-      - name: Colcon Build
-        uses: ros-tooling/action-ros-ci@v0.4
-        with:
-          package-name: ${{ env.ROS2_PKG_NAME }}
-          target-ros2-distro: jazzy
-          skip-tests: true
+          path: /opt/ros/${{ env.ROS_DISTRO }}/include
 
       - name: Upload Build results (`build` directory)
         uses: actions/upload-artifact@v4
@@ -67,7 +77,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ros-cpp-libraries
-          path: ${{ env.ROS2_CPP_LIBPATH }}
+          path: /opt/ros/${{ env.ROS_DISTRO }}/include
 
       - name: Download Colcon Build results (`build` directory)
         uses: actions/download-artifact@v4
@@ -115,5 +125,4 @@ jobs:
       - name: Colcon Test
         uses: ros-tooling/action-ros-ci@v0.4
         with:
-          package-name: ${{ env.ROS2_PKG_NAME }}
-          target-ros2-distro: jazzy
+          target-ros2-distro: ${{ env.ROS_DISTRO }}
